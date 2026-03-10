@@ -1,10 +1,10 @@
-public class ERYDER {
+public class eRyder {
     private String bikeID;
     private int batteryLevel;
     public boolean isAvailable;
     public float kmDriven;
 
-    public ERYDER(String bikeID, int batteryLevel, boolean isAvailable, float kmDriven)
+    public eRyder(String bikeID, int batteryLevel, boolean isAvailable, float kmDriven)
     {
         this.bikeID = bikeID;
         this.batteryLevel = batteryLevel;
@@ -26,7 +26,7 @@ public class ERYDER {
         }
     }
     
-    public ERYDER()
+    public eRyder()
     {
     }
 
