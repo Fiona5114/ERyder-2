@@ -93,4 +93,6 @@ public class eRyder {
             System.out.println("The batteryLevel must be from 0 to 100");
         }
     }
+    
 }
+

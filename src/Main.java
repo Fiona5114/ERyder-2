@@ -16,7 +16,8 @@ public class Main {
 
         Feedback feedback = new Feedback("Wang", "er", "11111@example.com");
         feedback.analyseFeedback(true, sent1, sent2, sent3, sent4, sent5);
-        System.out.println(feedback); 
+        System.out.println(feedback);
+
     }
 
 
