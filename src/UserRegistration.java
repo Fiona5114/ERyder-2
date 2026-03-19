@@ -40,8 +40,11 @@ public class UserRegistration {
 
         if (choice ==1){
             userType="Regular User";
-        }else{
+        }else if(choice==2){
             userType = "VIP User";
+        }
+        else{
+            System.out.println("Please give the choic again");
         }
         
         
@@ -50,7 +53,7 @@ public class UserRegistration {
 
         System.out.print("email adress:");
         emailAddress = sc.nextLine();
-        emailValid = analyseEmail();
+        emailValid = analyseEmail(emailAddress);
 
         System.out.print("birthday(YYYY-MM-DD):");
         dateOfBirth =sc.nextLine();
@@ -60,16 +63,16 @@ public class UserRegistration {
         System.out.print("card number(only VISA、MasterCard、American Express):");
         cardNumber = sc.nextLong();
         sc.nextLine();
-        cardNumberValid = analyseCardNumber();
+        cardNumberValid = analyseCardNumber(cardNumber);
 
         System.out.print("card expiry date( MM/YY,eg. 12/25):");
         cardExpiryDate = sc.nextLine();
-        cardStillValid = analyseCardExpiryDate();
+        cardStillValid = analyseCardExpiryDate(cardExpiryDate);
 
         System.out.print("card CVV(3-4 words):");
         cvv = sc.nextInt();
         sc.nextLine();
-        validCVV = analyseCVV();
+        validCVV = analyseCVV(cvv);
 
         finalCheckpoint();
 
@@ -77,33 +80,28 @@ public class UserRegistration {
     }
 
 
-        private boolean analyseCVV() {
-            return true;
-        }
 
         private boolean analyseCVV(int cvv){
         String cvvStr = Integer.toString(cvv);
         if(cardProvider.equals("American Express")&&cvvStr.length()==4||cardProvider.equals("VISA")&&cvvStr.length()==3||cardProvider.equals("MasterCard")&&cvvStr.length()==3){
             System.out.println("Card CVV is valid.");
-            validCVV=true;
         }else {
             System.out.println("Invalid CVV for the given card. Going back to the start of the registration process.");
-            validCVV=false;
+            registration();
         }
-        registration();
-        return validCVV;
+        
+        return true;
     }
 
 
-        private boolean analyseEmail() {
+        private boolean analyseEmail(String emailAddress) {
         if (emailAddress.contains("@") && emailAddress.contains(".")) {
             System.out.println("Email is valid");
-            return true;
         } else {
             System.out.println("Invalid email address. Going back to the start of the registration");
             registration(); 
-            return false;
         }
+        return true;
     }
 
     private boolean analyseAge(LocalDate dob) {
@@ -132,36 +130,33 @@ public class UserRegistration {
         return true;
     }
 
-    private boolean analyseCardNumber() {
+    private boolean analyseCardNumber(Long cardNumber) {
         String cardNumStr = String.valueOf(cardNumber);
         int firstTwoDigits = Integer.parseInt(cardNumStr.substring(0, 2));
         int firstFourDigits = Integer.parseInt(cardNumStr.substring(0, 4));
 
         if ((cardNumStr.length() == 13 || cardNumStr.length() == 15) && cardNumStr.startsWith("4")) {
             cardProvider = "VISA";
-            return true;
         }
         
         else if (cardNumStr.length() == 16 &&
                 ((firstTwoDigits >= 51 && firstTwoDigits <= 55) ||
                         (firstFourDigits >= 2221 && firstFourDigits <= 2720))) {
             cardProvider = "MasterCard";
-            return true;
         }
         
         else if (cardNumStr.length() == 15 && (cardNumStr.startsWith("34") || cardNumStr.startsWith("37"))) {
             cardProvider = "American Express";
-            return true;
         }
 
         else {
             System.out.println("Sorry,but we accept only VISA,MasterCard,or American Express cards.please try again with a valid card.Going back to the start of the registration.");
             registration(); 
-            return false;
         }
+        return true;
     }
 
-    private boolean analyseCardExpiryDate1() {
+    private boolean analyseCardExpiryDate(String cardExpiryDate) {
         int month = Integer.parseInt(cardExpiryDate.substring(0, 2));
         int year = 2000 + Integer.parseInt(cardExpiryDate.substring(3, 5));
 
@@ -171,12 +166,11 @@ public class UserRegistration {
 
         if (year > currentYear || (year == currentYear && month >= currentMonth)) {
             System.out.println("The card is still valid.");
-            return true;
         } else {
             System.out.println("Sorry, your card has expired. Please use a different card. Going back to the start of the registration process...");
             registration();
-            return false;
         }
+        return true;
     }
 
 
