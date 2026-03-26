@@ -9,7 +9,6 @@ public class RegisteredUsers {
     private String userType;
     private String[] lastThreeTrips;
 
-    // Constructor
     public RegisteredUsers(String fullName, String emailAddress, String dateOfBirth,
                             String cardNumber, String cardExpiryDate, String cardProvider,
                             String cvv, String userType, String[] lastThreeTrips) {
@@ -24,7 +23,6 @@ public class RegisteredUsers {
         this.lastThreeTrips = lastThreeTrips;
     }
 
-    // Getters
     public String getFullName() { return fullName; }
     public String getEmailAddress() { return emailAddress; }
     public String getDateOfBirth() { return dateOfBirth; }
@@ -35,7 +33,6 @@ public class RegisteredUsers {
     public String getUserType() { return userType; }
     public String[] getLastThreeTrips() { return lastThreeTrips; }
 
-    // Setters
     public void setFullName(String fullName) { this.fullName = fullName; }
     public void setEmailAddress(String emailAddress) { this.emailAddress = emailAddress; }
     public void setDateOfBirth(String dateOfBirth) { this.dateOfBirth = dateOfBirth; }
@@ -46,7 +43,6 @@ public class RegisteredUsers {
     public void setUserType(String userType) { this.userType = userType; }
     public void setLastThreeTrips(String[] lastThreeTrips) { this.lastThreeTrips = lastThreeTrips; }
 
-    // toString()
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
