@@ -28,9 +28,7 @@ public BikeRental(boolean isRegisteredUser, String emailAddress, String location
 
     public void simulateApplicationInput() {
         Scanner scanner = new Scanner(System.in);
-        // 1. 显示流程开始提示
         System.out.println("This is the simulation of the e-bike rental process.");
-        // 2. 接收用户输入
         System.out.print("Is this user registered? (true/false): ");
         isRegisteredUser = Boolean.parseBoolean(scanner.nextLine());
         System.out.print("Please enter your email address: ");
