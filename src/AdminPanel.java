@@ -120,7 +120,6 @@ public class AdminPanel {
         System.out.println("\n--- Registered Users ---");
         for (RegisteredUsers user : registeredUsersList) {
             System.out.println(user);
-            System.out.println("------------------------");
         }
     }
 
@@ -223,4 +222,12 @@ public class AdminPanel {
 
         System.out.println("User updated successfully!");
     }
+
+     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        BikeRental bikeRental = new BikeRental(false, null, null, null, null, false, null, null);
+    }
+
+
+
 }
