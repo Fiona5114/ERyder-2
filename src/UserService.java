@@ -6,12 +6,11 @@ public class UserService {
     List<RegisteredUsers> registeredUsers = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
     public void addNewUsers() {
-        System.out.println("\n=== Add New Users ===");
         System.out.println("How many users would you like to add? ");
         int num = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < num; i++) {
-            System.out.println("\n=== Adding User " + (i + 1) + " ===");
+            System.out.println("\nAdding User " + (i + 1) );
             
     
             System.out.print("Enter full name: ");
@@ -43,7 +42,7 @@ public class UserService {
             String[] lastThreeTrips = new String[3];
             
             for (int j = 0; j < 3; j++) {
-                System.out.println("\n=== Trip " + (j + 1) + " ===");
+                System.out.println("\nTrip " + (j + 1) );
                 
                 System.out.print("Enter date of trip (YYYY-MM-DD): ");
                 String tripDate = sc.nextLine();
@@ -75,9 +74,7 @@ public class UserService {
             }
             
 
-            RegisteredUsers newUser = new RegisteredUsers(fullName, emailAddress, dateOfBirth, 
-                                                          cardNumber, cardProvider, cardExpiryDate, 
-                                                          cvv, userType, lastThreeTrips);
+            RegisteredUsers newUser = new RegisteredUsers(fullName, emailAddress, dateOfBirth, cardNumber, cardProvider, cardExpiryDate,cvv, userType, lastThreeTrips);
             
 
             registeredUsers.add(newUser);
@@ -95,7 +92,7 @@ public class UserService {
         
         int userNumber = 1;
         for (RegisteredUsers user : registeredUsers) {
-            System.out.println("\n=== User " + userNumber + " ===");
+            System.out.println("\nUser " + userNumber );
             System.out.println("Full Name: " + user.getFullName());
             System.out.println("Email: " + user.getEmailAddress());
             System.out.println("Date of Birth: " + user.getDateOfBirth());

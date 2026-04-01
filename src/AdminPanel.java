@@ -47,7 +47,6 @@ public class AdminPanel {
     }
 
     private void startBikeRentalDemo(String bikeservice2, String rentalservice2) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'startBikeRentalDemo'");
     }
 
