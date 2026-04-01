@@ -6,6 +6,7 @@ public class Bike {
     private int batteryLevel;
     private LocalDateTime lastUsedTime;
     private String location;
+    private String model;
 
     public Bike(String bikeID, boolean isAvailable, int batteryLevel, LocalDateTime lastUsedTime, String location) {
         this.bikeID = bikeID;
@@ -13,6 +14,7 @@ public class Bike {
         this.batteryLevel = batteryLevel;
         this.lastUsedTime = lastUsedTime;
         this.location = location;
+        this.model = model;
     }
 
     public String getBikeID() {
@@ -55,13 +57,17 @@ public class Bike {
         this.location = location;
     }
 
+    public String getModel() { 
+        return model; }
+    public void setModel(String model) { 
+        this.model = model; }
+
     @Override
     public String toString() {
         return "Bike{" +
-                "bikeID='" + bikeID + '\'' +
+                "bikeId='" + bikeID + '\'' +
+                ", model='" + model + '\'' +
                 ", isAvailable=" + isAvailable +
-                ", batteryLevel=" + batteryLevel +
-                ", lastUsedTime=" + lastUsedTime +
                 ", location='" + location + '\'' +
                 '}';
     }

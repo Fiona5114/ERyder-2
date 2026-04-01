@@ -1,62 +1,15 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-
-public class AdminPanel {
-    private static final String BikeService = null;
-    private static final String RentalService = null;
+import java.util.Iterator;
+public class UserService {
     List<RegisteredUsers> registeredUsers = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
-    
-    public void userManagementOptions1() {
-        System.out.println("Welcome to E-Ryder Administrator Panel.");
-        System.out.println("What do you want to do?");
-        System.out.println("1. Add New Users");
-        System.out.println("2. View Registered Users");
-        System.out.println("3. Remove Registered Users");
-        System.out.println("4. Update Registered Users");
-        System.out.println("5. Demo the Bike Rental System");
-        System.out.println("6. EXIT");
-        System.out.println("Enter your choice: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
-        
-        switch (choice) {
-            case 1:
-                addNewUsers();
-                break;
-            case 2:
-                viewRegisteredUsers();
-                break;
-            case 3:
-                removeRegisteredUsers();
-                break;
-            case 4:
-                updateRegisteredUsers();
-                break;
-            case 5:
-                startBikeRentalDemo(BikeService, RentalService);
-                break;
-            case 6:
-                System.out.println("Exiting program. Goodbye!");
-                System.exit(0);
-            default:
-                System.out.println("Invalid choice. Please try again.");
-        }
-    }
-
-    private void startBikeRentalDemo(String bikeservice2, String rentalservice2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'startBikeRentalDemo'");
-    }
-
-    private void addNewUsers() {
-        System.out.println("\n Add New Users ");
+    public void addNewUsers() {
+        System.out.println("\n=== Add New Users ===");
         System.out.println("How many users would you like to add? ");
         int num = sc.nextInt();
         sc.nextLine();
-        
         for (int i = 0; i < num; i++) {
             System.out.println("\n=== Adding User " + (i + 1) + " ===");
             
@@ -90,7 +43,7 @@ public class AdminPanel {
             String[] lastThreeTrips = new String[3];
             
             for (int j = 0; j < 3; j++) {
-                System.out.println("\nTrip： " + (j + 1) );
+                System.out.println("\n=== Trip " + (j + 1) + " ===");
                 
                 System.out.print("Enter date of trip (YYYY-MM-DD): ");
                 String tripDate = sc.nextLine();
@@ -122,7 +75,9 @@ public class AdminPanel {
             }
             
 
-            RegisteredUsers newUser = new RegisteredUsers(fullName, emailAddress, dateOfBirth,cardNumber, cardProvider, cardExpiryDate, cvv, userType, lastThreeTrips);
+            RegisteredUsers newUser = new RegisteredUsers(fullName, emailAddress, dateOfBirth, 
+                                                          cardNumber, cardProvider, cardExpiryDate, 
+                                                          cvv, userType, lastThreeTrips);
             
 
             registeredUsers.add(newUser);
@@ -130,7 +85,8 @@ public class AdminPanel {
         }
     }
     
-    private void viewRegisteredUsers() {
+    public void viewRegisteredUsers() {
+        System.out.println("\n=== View Registered Users ===");
         
         if (registeredUsers.isEmpty()) {
             System.out.println("No registered users to display");
@@ -161,7 +117,7 @@ public class AdminPanel {
         }
     }
     
-    private void removeRegisteredUsers() {
+    public void removeRegisteredUsers() {
         if(registeredUsers.isEmpty())System.out.println("No registered users to remove.");
         else{
             System.out.println("Please enter the email: ");
@@ -181,7 +137,7 @@ public class AdminPanel {
         }
     }
     
-    private void updateRegisteredUsers() {
+    public void updateRegisteredUsers() {
         if(registeredUsers.isEmpty())System.out.println("No registered users to remove");
         else{
             System.out.println("Please enter the email: ");
@@ -226,46 +182,8 @@ public class AdminPanel {
                     break;
                 }
             } 
+            if(!found)System.out.println("No user found with this email address");
         }
         sc.close();
-    }
-
-    UserService userService = new UserService();
-    public void userManagementOptions() {
-        System.out.println("Welcome to E-Ryder Administrator Panel.");
-        System.out.println("What do you want to do?");
-        System.out.println("1. Add New Users");
-        System.out.println("2. View Registered Users");
-        System.out.println("3. Remove Registered Users");
-        System.out.println("4. Update Registered Users");
-        System.out.println("5. Demo the Bike Rental System");
-        System.out.println("6. EXIT");
-        System.out.println("Enter your choice: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
-        
-        switch (choice) {
-            case 1:
-                userService.addNewUsers();
-                break;
-            case 2:
-                userService.viewRegisteredUsers();
-                break;
-            case 3:
-                userService.removeRegisteredUsers();
-                break;
-            case 4:
-                userService.updateRegisteredUsers();
-                break;
-            case 5:
-                RentalService bikeRental = new RentalService();
-                bikeRental.simulateApplicationInput();
-                break;
-            case 6:
-                System.out.println("Exiting program. Goodbye!");
-                System.exit(0);
-            default:
-                System.out.println("Invalid choice. Please try again.");
-        }
     }
 }
