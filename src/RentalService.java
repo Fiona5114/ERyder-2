@@ -26,7 +26,7 @@ public class RentalService {
             return;
         }
         System.out.println("Simulating e-bike reservation…");
-        bikeService.reserveBike(bikeID);
+        bikeService.reserveBike(bikeID, emailAddress, location);
         viewActiveRentals();
         System.out.println("Simulating the end of the trip…");
         bikeService.removeTrip(bikeID);

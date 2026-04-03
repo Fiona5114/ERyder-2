@@ -8,6 +8,7 @@ public class AdminPanel {
     private static final String RentalService = null;
     List<RegisteredUsers> registeredUsers = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
+    private BikeService bikeService = new BikeService();
     
     public void userManagementOptions1() {
         System.out.println("Welcome to E-Ryder Administrator Panel.");
@@ -17,7 +18,9 @@ public class AdminPanel {
         System.out.println("3. Remove Registered Users");
         System.out.println("4. Update Registered Users");
         System.out.println("5. Demo the Bike Rental System");
-        System.out.println("6. EXIT");
+        System.out.println("6. View System Logs");
+        System.out.println("7. Manage Pending Bike Requests");
+        System.out.println("8. EXIT");
         System.out.println("Enter your choice: ");
         int choice = sc.nextInt();
         sc.nextLine();
@@ -39,10 +42,48 @@ public class AdminPanel {
                 startBikeRentalDemo(BikeService, RentalService);
                 break;
             case 6:
+                viewSystemLogs();
+                break;
+            case 7:
+                managePendingBikeRequests();
+                break;
+            case 8:
                 System.out.println("Exiting program. Goodbye!");
                 System.exit(0);
             default:
                 System.out.println("Invalid choice. Please try again.");
+        }
+    }
+    
+    private void viewSystemLogs(){
+        bikeService.viewSystemLogs();
+    }
+    
+    private void managePendingBikeRequests(){
+        boolean exit = false;
+        while(!exit){
+            System.out.println("\nManage Pending Bike Requests");
+            System.out.println("1. View Queue");
+            System.out.println("2. Update Queue");
+            System.out.println("3. Exit");
+            System.out.println("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+            
+            switch(choice){
+                case 1:
+                    bikeService.viewBikeRequestQueue();
+                    break;
+                case 2:
+                    bikeService.updateBikeRequestQueue();
+                    break;
+                case 3:
+                    exit = true;
+                    System.out.println("Exiting pending requests management.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 
@@ -57,7 +98,7 @@ public class AdminPanel {
         sc.nextLine();
         
         for (int i = 0; i < num; i++) {
-            System.out.println("\n=== Adding User " + (i + 1) + " ===");
+            System.out.println("\n Adding User " + (i + 1) );
             
     
             System.out.print("Enter full name: ");
@@ -89,7 +130,7 @@ public class AdminPanel {
             String[] lastThreeTrips = new String[3];
             
             for (int j = 0; j < 3; j++) {
-                System.out.println("\nTrip： " + (j + 1) );
+                System.out.println("\nTrip: " + (j + 1) );
                 
                 System.out.print("Enter date of trip (YYYY-MM-DD): ");
                 String tripDate = sc.nextLine();
@@ -238,7 +279,9 @@ public class AdminPanel {
         System.out.println("3. Remove Registered Users");
         System.out.println("4. Update Registered Users");
         System.out.println("5. Demo the Bike Rental System");
-        System.out.println("6. EXIT");
+        System.out.println("6. View System Logs");
+        System.out.println("7. Manage Pending Bike Requests");
+        System.out.println("8. EXIT");
         System.out.println("Enter your choice: ");
         int choice = sc.nextInt();
         sc.nextLine();
@@ -261,6 +304,12 @@ public class AdminPanel {
                 bikeRental.simulateApplicationInput();
                 break;
             case 6:
+                viewSystemLogs();
+                break;
+            case 7:
+                managePendingBikeRequests();
+                break;
+            case 8:
                 System.out.println("Exiting program. Goodbye!");
                 System.exit(0);
             default:
