@@ -3,9 +3,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Iterator;
 public class UserService {
-    List<RegisteredUsers> registeredUsers = new ArrayList<>();
+    public List<RegisteredUsers> registeredUsers = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
-    public void addNewUsers() {
+    public RegisteredUsers addNewUsers() {
         System.out.println("How many users would you like to add? ");
         int num = sc.nextInt();
         sc.nextLine();
@@ -74,12 +74,18 @@ public class UserService {
             }
             
 
-            RegisteredUsers newUser = new RegisteredUsers(fullName, emailAddress, dateOfBirth, cardNumber, cardProvider, cardExpiryDate,cvv, userType, lastThreeTrips);
+            RegisteredUsers newUser;
+            if (userType.equalsIgnoreCase("VIP")) {
+                newUser = new VIPUser(fullName, emailAddress, dateOfBirth, cardNumber, cardExpiryDate, cardProvider, cvv, userType, lastThreeTrips);
+            } else {
+                newUser = new RegularUser(fullName, emailAddress, dateOfBirth, cardNumber, cardExpiryDate, cardProvider, cvv, userType, lastThreeTrips);
+            }
             
 
             registeredUsers.add(newUser);
             System.out.println("User added successfully!");
         }
+        return registeredUsers.get(registeredUsers.size() - 1);
     }
     
     public void viewRegisteredUsers() {

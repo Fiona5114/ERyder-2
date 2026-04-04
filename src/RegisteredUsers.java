@@ -43,6 +43,14 @@ public class RegisteredUsers {
     public void setUserType(String userType) { this.userType = userType; }
     public void setLastThreeTrips(String[] lastThreeTrips) { this.lastThreeTrips = lastThreeTrips; }
 
+    public double calculateFare(double baseFare) {
+        return baseFare;
+    }
+
+    public void displayUserType() {
+        System.out.println("RegularUser");
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

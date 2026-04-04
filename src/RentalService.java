@@ -11,7 +11,10 @@ public class RentalService {
     private boolean locationValid;
     UserRegistration userRegistration = new UserRegistration();
     LinkedList<ActiveRental> activeRentalsList = new LinkedList<>();
-    public void simulateApplicationInput(){
+    
+    private static final double BASE_FARE = 3.0;
+    
+    public void simulateApplicationInput(RegisteredUsers user){
         System.out.println("This is the simulation of the e-bike rental process.");
         Scanner sc = new Scanner(System.in);
         isRegisteredUser = sc.nextBoolean();

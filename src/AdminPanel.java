@@ -288,7 +288,7 @@ public class AdminPanel {
         
         switch (choice) {
             case 1:
-                userService.addNewUsers();
+                RegisteredUsers newUser = userService.addNewUsers();
                 break;
             case 2:
                 userService.viewRegisteredUsers();
@@ -301,7 +301,11 @@ public class AdminPanel {
                 break;
             case 5:
                 RentalService bikeRental = new RentalService();
-                bikeRental.simulateApplicationInput();
+                RegisteredUsers demoUser = null;
+                if (!userService.registeredUsers.isEmpty()) {
+                    demoUser = userService.registeredUsers.get(userService.registeredUsers.size() - 1);
+                }
+                bikeRental.simulateApplicationInput(demoUser);
                 break;
             case 6:
                 viewSystemLogs();
